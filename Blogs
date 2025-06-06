@@ -1,0 +1,87 @@
+import React from 'react';
+import { Calendar, User, ArrowRight } from 'lucide-react';
+
+const Blog: React.FC = () => {
+  const articles = [
+    {
+      title: 'Les nouvelles tendances en droit des affaires',
+      excerpt: 'Découvrez les évolutions récentes du droit des affaires et leur impact sur les entreprises.',
+      image: 'https://images.pexels.com/photos/5668858/pexels-photo-5668858.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      date: '15 Mars 2024',
+      author: 'Me. Kéba Mbaye',
+      category: 'Juridique'
+    },
+    {
+      title: 'Innovation managériale : les clés du succès',
+      excerpt: 'Comment mettre en place une culture d\'innovation au sein de votre organisation ?',
+      image: 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      date: '10 Mars 2024',
+      author: 'Sarah Ndiaye',
+      category: 'Management'
+    },
+    {
+      title: 'L\'importance de la formation continue',
+      excerpt: 'La formation continue comme levier de performance et de développement professionnel.',
+      image: 'https://images.pexels.com/photos/3183183/pexels-photo-3183183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      date: '5 Mars 2024',
+      author: 'Dr. Fatou Diop',
+      category: 'Formation'
+    }
+  ];
+
+  return (
+    <section id="blog" className="section-padding bg-gray-50">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="text-center mb-12">
+          <h2 className="heading-secondary">Actualités et <span className="text-orange-500">Insights</span></h2>
+          <p className="text-gray-700 max-w-3xl mx-auto">
+            Restez informé des dernières tendances et actualités dans le domaine juridique et du développement professionnel.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {articles.map((article, index) => (
+            <article key={index} className="card-hover bg-white rounded-lg shadow-lg overflow-hidden">
+              <div className="relative h-72 image-hover-effect shine-effect">
+                <img 
+                  src={article.image} 
+                  alt={article.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-4 right-4 bg-orange-500 text-white text-sm font-semibold px-3 py-1 rounded-full">
+                  {article.category}
+                </div>
+              </div>
+              <div className="p-6 bg-gradient-to-b from-white to-gray-50">
+                <div className="flex items-center text-sm text-gray-600 mb-3">
+                  <Calendar className="h-4 w-4 mr-2" />
+                  {article.date}
+                  <span className="mx-2">•</span>
+                  <User className="h-4 w-4 mr-2" />
+                  {article.author}
+                </div>
+                <h3 className="font-heading font-semibold text-xl text-blue-900 mb-3">
+                  {article.title}
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  {article.excerpt}
+                </p>
+                <a href="#" className="inline-flex items-center text-orange-500 font-semibold hover:text-orange-600 transition-colors duration-300 shine-effect">
+                  Lire la suite <ArrowRight className="ml-2 h-4 w-4" />
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <a href="#" className="btn-primary inline-flex items-center shine-effect">
+            Voir tous les articles
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Blog;
