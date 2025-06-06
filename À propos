@@ -1,0 +1,57 @@
+import React from 'react';
+import { Target, Users, Award } from 'lucide-react';
+
+const About: React.FC = () => {
+  return (
+    <section id="about" className="section-padding bg-white">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="text-center mb-12 max-w-3xl mx-auto">
+          <h2 className="heading-secondary mb-4">À propos de <span className="text-orange-500">Kéba Consulting</span></h2>
+          <p className="text-gray-700 mb-8">
+            Kéba Consulting est un cabinet de conseil et un organisme de formation professionnelle continue opérant dans les domaines du conseil juridique et du développement personnel et professionnel.
+          </p>
+          <div className="h-1 w-24 bg-orange-500 mx-auto"></div>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="space-y-6 animate-slide-up">
+            <p className="text-gray-700">
+              Nous sommes spécialisés dans l'accompagnement, l'évaluation et le développement des compétences de toutes entités, permettant aux entreprises et autres organisations de développer leur capital humain.
+            </p>
+            <p className="text-gray-700">
+              Notre mission est d'aider nos clients, qu'il s'agisse d'entreprises privées, d'administrations publiques ou d'organisations non gouvernementales, à créer de la valeur en intégrant la dimension humaine dans leur gestion et en développant leur capital humain.
+            </p>
+            <div className="flex space-x-4 pt-4">
+              <div className="h-12 w-1 bg-blue-800"></div>
+              <p className="text-blue-900 font-semibold italic">
+                "Nous croyons au potentiel humain comme véritable moteur de croissance et d'innovation."
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-blue-50 p-6 rounded-lg shadow-md transform transition-transform hover:scale-105">
+              <Target className="text-orange-500 mb-4 h-10 w-10" />
+              <h3 className="font-heading font-semibold text-lg text-blue-900 mb-2">Notre Vision</h3>
+              <p className="text-gray-700">Être le partenaire de référence en matière de développement du capital humain.</p>
+            </div>
+            
+            <div className="bg-blue-50 p-6 rounded-lg shadow-md transform transition-transform hover:scale-105">
+              <Users className="text-orange-500 mb-4 h-10 w-10" />
+              <h3 className="font-heading font-semibold text-lg text-blue-900 mb-2">Notre Équipe</h3>
+              <p className="text-gray-700">Des experts pluridisciplinaires passionnés par le développement humain.</p>
+            </div>
+            
+            <div className="bg-blue-50 p-6 rounded-lg shadow-md transform transition-transform hover:scale-105 md:col-span-2">
+              <Award className="text-orange-500 mb-4 h-10 w-10" />
+              <h3 className="font-heading font-semibold text-lg text-blue-900 mb-2">Nos Valeurs</h3>
+              <p className="text-gray-700">Excellence, intégrité, innovation et respect sont au cœur de notre approche.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default About;
