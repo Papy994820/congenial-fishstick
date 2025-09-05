@@ -1,0 +1,8 @@
+public class GameOfLife {
+    private static final int GRID_SIZE = 5;
+    private int[][] currentGrid;
+
+    public GameOfLife() {
+        this.currentGrid = new int[GRID_SIZE][GRID_SIZE];
+    }
+}
