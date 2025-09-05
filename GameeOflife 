@@ -1,8 +1,87 @@
+import java.util.concurrent.TimeUnit;
+
 public class GameOfLife {
     private static final int GRID_SIZE = 5;
-    private int[][] currentGrid;
+    private int[][] grid;
 
     public GameOfLife() {
-        this.currentGrid = new int[GRID_SIZE][GRID_SIZE];
+        this.grid = new int[GRID_SIZE][GRID_SIZE];
+    }
+
+    public void initializeGrid(int[][] initialPattern) {
+        for (int i = 0; i < GRID_SIZE; i++) {
+            System.arraycopy(initialPattern[i], 0, this.grid[i], 0, GRID_SIZE);
+        }
+    }
+
+    public void displayGrid() {
+        for (int i = 0; i < GRID_SIZE; i++) {
+            for (int j = 0; j < GRID_SIZE; j++) {
+                System.out.print(this.grid[i][j] == 1 ? "■ " : "□ ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+    public void nextGeneration() {
+        int[][] nextGrid = new int[GRID_SIZE][GRID_SIZE];
+
+        for (int i = 0; i < GRID_SIZE; i++) {
+            for (int j = 0; j < GRID_SIZE; j++) {
+                int liveNeighbors = countLiveNeighbors(i, j);
+
+                if (grid[i][j] == 1) {
+                    if (liveNeighbors == 2 || liveNeighbors == 3) {
+                        nextGrid[i][j] = 1;
+                    }
+                } else {
+                    if (liveNeighbors == 3) {
+                        nextGrid[i][j] = 1;
+                    }
+                }
+            }
+        }
+        this.grid = nextGrid;
+    }
+
+    private int countLiveNeighbors(int row, int col) {
+        int count = 0;
+        for (int i = -1; i <= 1; i++) {
+            for (int j = -1; j <= 1; j++) {
+                if (i == 0 && j == 0) {
+                    continue;
+                }
+                int newRow = row + i;
+                int newCol = col + j;
+
+                if (newRow >= 0 && newRow < GRID_SIZE && newCol >= 0 && newCol < GRID_SIZE) {
+                    count += this.grid[newRow][newCol];
+                }
+            }
+        }
+        return count;
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        GameOfLife game = new GameOfLife();
+        
+        int[][] initialPattern = {
+            {0, 0, 0, 0, 0},
+            {0, 1, 1, 0, 0},
+            {0, 1, 1, 0, 0},
+            {0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0}
+        };
+        
+        game.initializeGrid(initialPattern);
+
+        for (int generation = 0; generation < 10; generation++) {
+            System.out.println("Génération " + (generation + 1) + ":");
+            game.displayGrid();
+            game.nextGeneration();
+            TimeUnit.SECONDS.sleep(1);
+        }
     }
 }
+
